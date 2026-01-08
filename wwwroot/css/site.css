@@ -47,3 +47,109 @@ body {
     border-radius: 16px;
 }
 
+/* ===== Globalt tema ===== */
+:root {
+    --pink-main: #f6a5c0;
+    --pink-dark: #e779a4;
+    --pink-light: #fde6ef;
+    --text-dark: #3a3a3a;
+    --white: #ffffff;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin-bottom: 60px;
+    background: linear-gradient(180deg, var(--pink-light), #fff);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--text-dark);
+}
+
+/* ===== Fokus & inputs ===== */
+.form-control,
+.form-select {
+    border-radius: 12px;
+    border: 1px solid #f1c6d6;
+    padding: 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--pink-dark);
+    box-shadow: 0 0 0 0.2rem rgba(231, 121, 164, 0.25);
+}
+
+/* ===== Knappar ===== */
+.btn-primary {
+    background-color: var(--pink-main);
+    border: none;
+    border-radius: 14px;
+    padding: 12px 26px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--pink-dark);
+    transform: translateY(-1px);
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(231, 121, 164, 0.4);
+}
+
+/* ===== Sektion: Treatments ===== */
+.treatments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 80px auto;
+    max-width: 1300px;
+    padding: 0 20px;
+}
+
+/* Responsiv layout */
+@media (max-width: 992px) {
+    .treatments {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* ===== Bilder ===== */
+.treatments img {
+    width: 100%;
+    max-width: 600px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+}
+
+.treatments img:hover {
+    transform: scale(1.02);
+}
+
+/* ===== Kort / boxar (om du använder dem) ===== */
+.card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* ===== Rubriker ===== */
+h1, h2, h3 {
+    font-weight: 700;
+    color: #2f2f2f;
+}
+
+h1 span, h2 span {
+    color: var(--pink-dark);
+}
+
+
