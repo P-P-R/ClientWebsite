@@ -1,0 +1,52 @@
+@page
+@model CityStyle.Web.Pages.Admin.BokningarModel
+
+<h1>Admin – Bokningar</h1>
+
+<a class="btn btn-sm btn-outline-secondary" href="/Admin/Logout">Logga ut</a>
+
+@if (Model.Items.Count == 0)
+{
+    <p>Inga kommande bokningar.</p>
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Tid</th>
+                        <th>Tjänst</th>
+                        <th>Kund</th>
+                        <th>Telefon</th>
+                        <th>E-post</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var b in Model.Items)
+                    {
+                        <tr>
+                            <td>@b.Date</td>
+                            <td>@b.Time.ToString("HH:mm")</td>
+                            <td>@b.ServiceName</td>
+                            <td>@b.CustomerName</td>
+                            <td>@b.Phone</td>
+                            <td>@b.Email</td>
+                            <td>
+                                <form method="post" asp-page-handler="Cancel">
+                                    <input type="hidden" name="id" value="@b.Id" />
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">
+                                        Avboka
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

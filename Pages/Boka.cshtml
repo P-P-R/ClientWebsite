@@ -1,0 +1,71 @@
+@page
+@model BokaModel
+
+<h1>Boka</h1>
+
+@if (Model.BookingSaved)
+{
+    <div class="card">
+        <div class="card-body">
+            <h5>Bokning mottagen ✅</h5>
+            <p>
+                <strong>Tjänst:</strong> @Model.Service<br />
+                <strong>Datum:</strong> @Model.Date<br />
+                <strong>Tid:</strong> @Model.Time<br />
+            </p>
+        </div>
+    </div>
+}
+else
+{
+    <p><strong>Vald tjänst:</strong> @Model.Service</p>
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <form method="post" class="card">
+        <div class="card-body">
+
+            <input type="hidden" asp-for="Service" />
+
+            <div class="mb-3">
+                <label class="form-label">Namn</label>
+                <input class="form-control" asp-for="Name" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Telefon</label>
+                <input class="form-control" asp-for="Phone" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">E-post</label>
+                <input class="form-control" asp-for="Email" type="email" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Datum</label>
+                <input class="form-control" asp-for="Date" type="date" required 
+                       min="@DateOnly.FromDateTime(DateTime.Today).ToString("yyyy-MM-dd")" />
+                <span class="text-danger" asp-validation-for="Date"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Tid</label>
+                <select class="form-control" asp-for="Time" required>
+                <option value="">Välj tid...</option>
+                @foreach (var t in Model.AvailableTimes)
+                {
+                    <option value="@t.ToString("HH:mm")">@t.ToString("HH:mm")</option>
+                }
+                </select>
+                <span class="text-danger" asp-validation-for="Time"></span>
+                <small class="text-muted">Vardagar: 10–18 • Helger: 11–15</small>
+
+                <span class="text-danger" asp-validation-for="Time"></span>
+                <small class="text-muted">
+                    Vardagar: 10–18 • Helger: 11–15
+                </small>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Boka</button>
+        </div>
+    </form>
+}

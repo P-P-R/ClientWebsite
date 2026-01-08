@@ -1,0 +1,17 @@
+@page
+@model CityStyle.Web.Pages.Admin.LoginModel
+
+<h1>Admin – Logga in</h1>
+
+@if (!string.IsNullOrEmpty(Model.Error))
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+
+<form method="post" class="card p-3" style="max-width: 420px;">
+    <div class="mb-3">
+        <label class="form-label">Lösenord</label>
+        <input class="form-control" type="password" asp-for="Password" />
+    </div>
+    <button class="btn btn-primary" type="submit">Logga in</button>
+</form>

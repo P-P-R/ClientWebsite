@@ -1,0 +1,17 @@
+@page
+@model CityStyle.Web.Pages.CancelModel
+
+<h1>Avbokning</h1>
+
+@if (Model.Success)
+{
+    <div class="alert alert-success">
+        Din bokning är avbokad ✅
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        Avbokningslänken är ogiltig eller bokningen finns inte längre.
+    </div>
+}
